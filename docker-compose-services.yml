@@ -1,0 +1,48 @@
+version: '3'
+services:
+  consul:
+    image: consul:1.1.0
+    ports:
+      - "8500:8500"
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+  service1_1:
+    container_name: service1_1
+    image: martell805/rksp-service1:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+  service1_2:
+    container_name: service1_2
+    image: martell805/rksp-service1:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+  service2_1:
+    container_name: service2_1
+    image: martell805/rksp-service2:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+  service2_2:
+    container_name: service2_2
+    image: martell805/rksp-service2:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+  service3_1:
+    container_name: service3_1
+    image: martell805/rksp-service3:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
+  service3_2:
+    container_name: service3_2
+    image: martell805/rksp-service3:latest
+    environment:
+      - CONSUL_HOST=consul
+      - CONSUL_PORT=8500
