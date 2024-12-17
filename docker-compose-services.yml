@@ -7,7 +7,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8080:8080"
+      - "8090:8080"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
   service1_1:
